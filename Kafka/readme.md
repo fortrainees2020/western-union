@@ -1,4 +1,11 @@
 ## Run the Application on Kafka
+
+### Step 0: Download Kafka
+1. Download: https://kafka.apache.org/downloads
+2. tar -xvzf kafka_2.13-2.7.1.tgz
+   cd kafka_2.13-2.7.1
+3. If you download kafka_2.13-2.7.1.tgz, you can right-click and use 7-Zip (or WinRAR) to extract it directly, no need to convert.
+
 ### Step1 : Setup Kafka
 bin/zookeeper-server-start.sh config/zookeeper.properties
 bin/kafka-server-start.sh config/server.properties
