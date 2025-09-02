@@ -1,5 +1,5 @@
 ##Run the Application on Kafka
-*** Step1 : Setup Kafka***
+### Step1 : Setup Kafka
 bin/zookeeper-server-start.sh config/zookeeper.properties
 bin/kafka-server-start.sh config/server.properties
 
