@@ -23,9 +23,8 @@ D:\SourceCode-1-Jul-2020\TestAWSPracticeCheck\aws-employee>docker pull ashujauha
 D:\SourceCode-1-Jul-2020\TestAWSPracticeCheck\aws-employee>docker container run -d -p 7000:7000 --network emp-dept-net --name emp-service ashujauhari/ij005-emp
 ```
 ## Test:
-```
 http://localhost:7000/api/emp/employees
-```
+
 
 ## Department Service (Feign)
 ```
