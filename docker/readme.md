@@ -13,6 +13,8 @@ docker exec -it 00220e3ed7c1 bash
 exit
 docker login
 docker rmi 356
+docker rmi -f 123
+docker image build -t <name of image> .
 ```
 ## Employee Service
 ```
