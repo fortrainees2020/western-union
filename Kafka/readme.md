@@ -5,31 +5,37 @@
 1. Extract C:\Software\SFT_BIN>tar -xvzf kafka_2.12-3.9.1.tgz
 2. Create a Kafka folder - copy the extracted content to Kafka folder.
 3. Powershell - Start the Kafka Server
-4. PS C:\Software\SFT_BIN\kafka> .\bin\windows\kafka-storage.bat random-uuid
+   ```
+5. PS C:\Software\SFT_BIN\kafka> .\bin\windows\kafka-storage.bat random-uuid
       It will geernate a cluster id: 4bQqUo6xQ9-gbJy0xTZVxg
+```
+```
 PS C:\Software\SFT_BIN\kafka> .\bin\windows\kafka-storage.bat format -t 4bQqUo6xQ9-gbJy0xTZVxg -c .\config\kraft\server.properties
+```
       Formatting metadata directory /tmp/kraft-combined-logs with metadata.version 3.9-IV0.
       
       a. kafka-storage.bat format → formats the Kafka log directory for first-time use.
 			b. -t <UUID> → the cluster ID you generated with random-uuid.
 			c. -c .\config\kraft\server.properties → tells Kafka which configuration file to use.
-5. Create Topic:
+```
+7. Create Topic:
 	C:\Software\SFT_BIN\kafka>.\bin\windows\kafka-topics.bat --create --topic test-topic --bootstrap-server localhost:9092
 					Created topic test-topic.
-
-6. List topics :
+```
+```
+8. List topics :
 	C:\Software\SFT_BIN\kafka>.\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
 				test-topic
-        
-7. Create Producer : C:\Software\SFT_BIN\kafka>.\bin\windows\kafka-console-producer.bat --topic test-topic --bootstrap-server localhost:9092
+```
+
+```       
+9. Create Producer : C:\Software\SFT_BIN\kafka>.\bin\windows\kafka-console-producer.bat --topic test-topic --bootstrap-server localhost:9092
 >hello
-
-
+```
+```
 8. C:\Software\SFT_BIN\kafka>.\bin\windows\kafka-console-consumer.bat --topic test-topic --from-beginning --bootstrap-server localhost:9092
-
-### Step1 : Setup Kafka
-bin/zookeeper-server-start.sh config/zookeeper.properties
-bin/kafka-server-start.sh config/server.properties
+```
+//-----------------------------------------
 
 ### Step 2: Start Consumer Service (spring-kafka-consumer) → listens on port 8082
 
