@@ -33,16 +33,16 @@ Rename a collection
  ``` db.employees.renameCollection("myemp") ```
 
 8) View current database
-   ```db```
+   ``` db ```
 
 9) List collections
     
-   ```show collections```
+   ``` show collections```
 
 
 11) Collection stats
 ``` db.employees.insertOne({ empId: 1, name: "John", dept: "IT" })
-    db.employees.stats()```
+    db.employees.stats() ```
 
 
 B. Insert Operations
@@ -55,7 +55,7 @@ B. Insert Operations
    ``` db.employees.insertMany([
       { name: "Alice", age: 25, dept: "IT" },
       { name: "Bob", age: 28, dept: "Finance" }
-    ])```
+    ]) ```
 
 13) Insert with nested document
     ```db.employees.insertOne({ name: "Sara", address: { city: "NY", zip: 12345 } })```
