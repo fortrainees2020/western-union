@@ -22,8 +22,7 @@ A. Database & Collection Management (DDL)
    ```db.createCollection("events", { capped: true, size: 1048576, max: 1000 }) ```
 
 7) Drop a collection
-   ``` db.employees.drop()
-```
+   ``` db.employees.drop()```
 8) Drop current database
   ``` db.dropDatabase()
 ```
