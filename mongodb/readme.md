@@ -69,17 +69,25 @@ A. Database & Collection Management (DDL)
   ``` db.dropDatabase()
 ```
 9) use mydb
-``` db.oldName.insertOne({ empId: 1, name: "Ashu" }) ```
+```
+ db.oldName.insertOne({ empId: 1, name: "Ashu" })
+```
 
 Rename a collection
- ``` db.employees.renameCollection("myemp") ```
+ ```
+ db.employees.renameCollection("myemp")
+```
 
 8) View current database
-   ``` db ```
+   ```
+   db
+    ```
 
-9) List collections
+10) List collections
     
-   ``` show collections ```
+   ``` 
+   show collections
+```
 
 
 11) Collection stats
