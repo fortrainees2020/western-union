@@ -25,22 +25,18 @@ Add bin to PATH
 5. Start MongoDB
 As service:
 
-cmd
-Copy code
+
 net start MongoDB
 Or manually:
 
-cmd
-Copy code
+
 "C:\Program Files\MongoDB\Server\<version>\bin\mongod.exe" --dbpath="C:\data\db"
 6. Connect
-cmd
-Copy code
+
 mongosh
 MongoDB Lab Manual - Queries & Tasks (Draft)
 A. Database & Collection Management
-js
-Copy code
+
 show dbs
 use company
 db.createCollection("employees")
@@ -53,8 +49,7 @@ show collections
 db.employees.insertOne({ empId: 1, name: "John", dept: "IT" })
 db.employees.stats()
 B. Insert Operations
-js
-Copy code
+
 db.employees.insertOne({ name: "John", age: 30, dept: "HR" })
 db.employees.insertMany([{ name: "Alice", age: 25 }, { name: "Bob", age: 28 }])
 db.employees.insertOne({ name: "Sara", address: { city: "NY", zip: 12345 } })
@@ -66,8 +61,7 @@ db.prices.insertOne({ sku: "P100", price: NumberDecimal("19.99") })
 db.flags.insertOne({ feature: "beta", enabled: true })
 db.logs.insertOne({ level: "INFO", at: ISODate("2024-01-01T10:00:00Z") })
 C. Basic Reads
-js
-Copy code
+
 db.employees.find()
 db.employees.findOne()
 db.employees.find({ dept: "IT" })
@@ -79,24 +73,21 @@ db.employees.find({ age: { $gte: 30 } })
 db.employees.find({ dept: { $ne: "HR" } })
 db.employees.find({ dept: { $in: ["IT", "Finance"] } })
 D. Projection
-js
-Copy code
+
 db.employees.find({}, { name: 1 })
 db.employees.find({}, { _id: 0, name: 1, dept: 1 })
 db.employees.find({}, { address: 0 })
 db.sales.aggregate([{ $project: { total: { $multiply: ["$qty", "$price"] } } }])
 db.posts.find({}, { comments: { $slice: 5 } })
 E. Sorting, Limiting, Skipping
-js
-Copy code
+
 db.employees.find().sort({ age: 1 })
 db.employees.find().sort({ age: -1 })
 db.employees.find().limit(5)
 db.employees.find().skip(10)
 db.employees.find().skip(20).limit(10)
 F. Updates
-js
-Copy code
+
 db.employees.updateOne({ name: "John" }, { $set: { age: 31 } })
 db.employees.updateMany({ dept: "IT" }, { $set: { status: "active" } })
 db.employees.updateOne({ name: "John" }, { $inc: { age: 1 } })
@@ -114,8 +105,7 @@ db.employees.deleteOne({ name: "John" })
 db.employees.deleteMany({ dept: "Finance" })
 db.temp.deleteMany({})
 H. Array Queries & Updates
-js
-Copy code
+
 db.employees.find({ skills: "Java" })
 db.scores.find({ points: { $elemMatch: { $gt: 80 } } })
 db.employees.find({ skills: { $size: 3 } })
@@ -124,8 +114,7 @@ db.employees.updateOne({ name: "Mike" }, { $pull: { skills: "Java" } })
 db.arr.updateOne({ _id: 1 }, { $push: { vals: { $each: [5,3,9], $sort: 1 } } })
 db.arr.updateOne({ _id: 1 }, { $pop: { vals: 1 } })
 I. Aggregation Basics
-js
-Copy code
+
 db.employees.countDocuments()
 db.employees.aggregate([{ $group: { _id: "$dept", total: { $sum: 1 } } }])
 db.employees.aggregate([{ $group: { _id: "$dept", avgAge: { $avg: "$age" } } }])
@@ -164,8 +153,7 @@ db.employees.aggregate([
   }}
 ])
 K. Indexing & Performance
-js
-Copy code
+
 db.employees.createIndex({ name: 1 })
 db.employees.createIndex({ dept: 1, age: -1 })
 db.articles.insertMany([
@@ -178,8 +166,7 @@ db.employees.getIndexes()
 db.employees.dropIndex("name_1")
 db.employees.find({ name: "John" }).explain("executionStats")
 L. Text & Regex Search
-js
-Copy code
+
 db.articles.find({ $text: { $search: "MongoDB performance" } })
 db.articles.find(
   { $text: { $search: "scaling" } },
@@ -188,8 +175,7 @@ db.articles.find(
 db.employees.find({ name: /^A/ })
 db.employees.find({ name: /john/i })
 M. Schema & Validation
-js
-Copy code
+
 db.createCollection("validated", {
   validator: { $jsonSchema: {
     bsonType: "object",
@@ -207,16 +193,14 @@ db.runCommand({
   bypassDocumentValidation: true
 })
 N. Distinct, Exists, Types
-js
-Copy code
+
 db.employees.distinct("dept")
 db.employees.find({ manager: { $exists: true } })
 db.employees.find({ age: { $type: "int" } })
 db.employees.find({ middleName: null })
 db.employees.find({ middleName: { $exists: false } })
 O. Dates & Time
-js
-Copy code
+
 db.logs.find({ at: { $gte: ISODate(new Date().toISOString().slice(0,10) + "T00:00:00Z") } })
 
 db.events.aggregate([
@@ -230,14 +214,12 @@ db.logs.aggregate([
   }}
 ])
 P. Security & Users
-js
-Copy code
+
 db.createUser({ user: "appuser", pwd: "StrongPass123", roles: [{ role: "readWrite", db: "company" }] })
 db.updateUser("appuser", { pwd: "NewPass456" })
 db.getUsers()
 Q. Transactions (Replica set required)
-js
-Copy code
+
 const session = db.getMongo().startSession();
 session.startTransaction();
 try {
@@ -249,7 +231,6 @@ try {
 }
 session.endSession();
 R. Backup/Restore (CLI)
-bash
-Copy code
+
 mongodump --db company --out ./backup
 mongorestore --db company ./backup/company
