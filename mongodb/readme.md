@@ -48,6 +48,7 @@ db
 show collections
 db.employees.insertOne({ empId: 1, name: "John", dept: "IT" })
 db.employees.stats()
+
 B. Insert Operations
 
 db.employees.insertOne({ name: "John", age: 30, dept: "HR" })
@@ -60,6 +61,7 @@ db.employees.updateOne({ _id: 5001 }, { $setOnInsert: { name: "Zed" } }, { upser
 db.prices.insertOne({ sku: "P100", price: NumberDecimal("19.99") })
 db.flags.insertOne({ feature: "beta", enabled: true })
 db.logs.insertOne({ level: "INFO", at: ISODate("2024-01-01T10:00:00Z") })
+
 C. Basic Reads
 
 db.employees.find()
@@ -79,6 +81,7 @@ db.employees.find({}, { _id: 0, name: 1, dept: 1 })
 db.employees.find({}, { address: 0 })
 db.sales.aggregate([{ $project: { total: { $multiply: ["$qty", "$price"] } } }])
 db.posts.find({}, { comments: { $slice: 5 } })
+
 E. Sorting, Limiting, Skipping
 
 db.employees.find().sort({ age: 1 })
@@ -86,6 +89,7 @@ db.employees.find().sort({ age: -1 })
 db.employees.find().limit(5)
 db.employees.find().skip(10)
 db.employees.find().skip(20).limit(10)
+
 F. Updates
 
 db.employees.updateOne({ name: "John" }, { $set: { age: 31 } })
@@ -98,12 +102,13 @@ db.stats.updateOne({ _id: 1 }, { $min: { low: 10 }, $max: { high: 100 } })
 db.docs.updateOne({ _id: 1 }, { $currentDate: { updatedAt: true } })
 db.employees.updateOne({ name: "Nora" }, { $set: { dept: "Ops" } }, { upsert: true })
 db.employees.updateOne({ name: "Mike" }, { $addToSet: { skills: "Docker" } })
+
 G. Deletes
-js
-Copy code
+
 db.employees.deleteOne({ name: "John" })
 db.employees.deleteMany({ dept: "Finance" })
 db.temp.deleteMany({})
+
 H. Array Queries & Updates
 
 db.employees.find({ skills: "Java" })
@@ -125,9 +130,8 @@ db.employees.aggregate([{ $sort: { age: -1 } }])
 db.employees.aggregate([{ $project: { name: 1, dept: 1, _id: 0 } }])
 db.sales.aggregate([{ $addFields: { total: { $multiply: ["$qty", "$price"] } } }])
 db.employees.aggregate([{ $limit: 10 }])
+
 J. Aggregation – Joins & Arrays
-js
-Copy code
 db.employees.aggregate([
   { $lookup: { from: "departments", localField: "deptId", foreignField: "_id", as: "deptInfo" } }
 ])
@@ -152,6 +156,7 @@ db.employees.aggregate([
       ages:   [ { $bucket: { groupBy: "$age", boundaries: [20,30,40,50,60], default: "60+" } } ]
   }}
 ])
+
 K. Indexing & Performance
 
 db.employees.createIndex({ name: 1 })
@@ -165,6 +170,7 @@ db.places.createIndex({ location: "2dsphere" })
 db.employees.getIndexes()
 db.employees.dropIndex("name_1")
 db.employees.find({ name: "John" }).explain("executionStats")
+
 L. Text & Regex Search
 
 db.articles.find({ $text: { $search: "MongoDB performance" } })
