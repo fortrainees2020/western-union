@@ -1,4 +1,59 @@
-MongoDB Lab Manual - 100 Practical Queries & Tasks
+
+Mongodb Setup 
+1. Download
+
+Go to MongoDB Community Server Download
+.
+
+Select Windows x64 MSI and download.
+
+2. Install
+
+Run the .msi installer as Administrator.
+
+Choose Complete Setup.
+
+Tick Install MongoDB as a Service (recommended).
+
+(Optional) Tick Install MongoDB Compass.
+
+Finish installation.
+
+3. Create Data Folder (if needed)
+
+If not created automatically, open Command Prompt (Admin):
+
+md C:\data\db
+
+4. Install MongoDB Shell (mongosh)
+
+Download MongoDB Shell
+.
+
+Install it.
+
+Add its bin folder to PATH (Environment Variables).
+
+5. Start MongoDB
+
+If installed as a service:
+
+net start MongoDB
+
+
+Or run manually:
+
+"C:\Program Files\MongoDB\Server\<version>\bin\mongod.exe" --dbpath="C:\data\db"
+
+6. Connect
+
+Open new terminal:
+
+mongosh
+
+
+You’re now connected to MongoDB at mongodb://localhost:27017.
+MongoDB Lab Manual - Queries & Tasks
 ======================================================
 
 A. Database & Collection Management (DDL)
