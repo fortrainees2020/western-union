@@ -38,8 +38,7 @@ Or run manually:
 ## 6. Connect
 
 Open new terminal:
-``` mongosh ```
-
+```  mongosh ```
 
 You’re now connected to MongoDB at mongodb://localhost:27017.
 
