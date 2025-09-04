@@ -79,7 +79,7 @@ Rename a collection
 
 9) List collections
     
-   ``` show collections```
+   ``` show collections ```
 
 
 11) Collection stats
@@ -91,7 +91,7 @@ B. Insert Operations
 --------------------
 11) Insert one document
    ``` db.employees.insertOne({ name: "John", age: 30, dept: "HR" })
-    db.employees.find()```
+    db.employees.find() ```
 
 12) Insert many documents
    ``` db.employees.insertMany([
@@ -100,22 +100,22 @@ B. Insert Operations
     ]) ```
 
 13) Insert with nested document
-    ```db.employees.insertOne({ name: "Sara", address: { city: "NY", zip: 12345 } })```
+    ``` db.employees.insertOne({ name: "Sara", address: { city: "NY", zip: 12345 } }) ```
 
 14) Insert with array
-    ```db.employees.insertOne({ name: "Mike", skills: ["Java", "Python", "MongoDB"] })```
+    ``` db.employees.insertOne({ name: "Mike", skills: ["Java", "Python", "MongoDB"] }) ```
 
 15) Insert with custom _id
-   ``` db.employees.insertOne({ _id: 1001, name: "Leo" })```
+   ``` db.employees.insertOne({ _id: 1001, name: "Leo" }) ```
 
 16) Insert with date
-   ``` db.employees.insertOne({ name: "Rita", joined: new Date(), dept: "IT" })```
+   ``` db.employees.insertOne({ name: "Rita", joined: new Date(), dept: "IT" }) ```
 
 17) Insert if not exists (upsert via update)
-   ``` db.employees.updateOne({ _id: 5001 }, { $setOnInsert: { name: "Zed" } }, { upsert: true })```
+   ``` db.employees.updateOne({ _id: 5001 }, { $setOnInsert: { name: "Zed" } }, { upsert: true }) ```
 
 18) Insert document with decimal
-    ```db.prices.insertOne({ sku: "P100", price: NumberDecimal("19.99") })```
+    ``` db.prices.insertOne({ sku: "P100", price: NumberDecimal("19.99") }) ```
     
    ``` db.employees.find().limit(5)```
 
@@ -123,78 +123,78 @@ B. Insert Operations
    ``` db.flags.insertOne({ feature: "beta", enabled: true })```
 
 20) Insert document with ISODate string
-    ```db.logs.insertOne({ level: "INFO", at: ISODate("2024-01-01T10:00:00Z") })```
+    ``` db.logs.insertOne({ level: "INFO", at: ISODate("2024-01-01T10:00:00Z") }) ```
 
-```db.employees.insertOne({
+```  db.employees.insertOne({
   name: "Tom",
   department: "IT",
   salary: 55000
-})```
+}) ```
 
 
 C. Basic Reads (find / findOne)
 -------------------------------
 21) Find all documents
-    ```db.employees.find()```
+    ``` db.employees.find() ```
 
 22) Find one document
-    ```db.employees.findOne()```
+    ``` db.employees.findOne() ```
 
 23) Find with equality
-  ```  db.employees.find({ dept: "IT" })```
+  ```  db.employees.find({ dept: "IT" }) ```
 
 24) AND condition
-  ```  db.employees.find({ dept: "IT", age: 25 })```
+  ```  db.employees.find({ dept: "IT", age: 25 }) ```
 
 25) OR condition
-    ```db.employees.find({ $or: [{ dept: "IT" }, { age: 28 }] })```
+    ```db.employees.find({ $or: [{ dept: "IT" }, { age: 28 }] }) ```
 
 26) Greater than
-  ```  db.employees.find({ age: { $gt: 25 } })```
+  ```  db.employees.find({ age: { $gt: 25 } }) ```
 
 27) Less than
-   ``` db.employees.find({ age: { $lt: 30 } })```
+   ``` db.employees.find({ age: { $lt: 30 } }) ```
 
 28) Greater or equal
-    ```db.employees.find({ age: { $gte: 30 } })```
+    ```db.employees.find({ age: { $gte: 30 } }) ```
 
 29) Not equal
-   ``` db.employees.find({ dept: { $ne: "HR" } })```
+   ``` db.employees.find({ dept: { $ne: "HR" } }) ```
 
 30) IN condition
-   ``` db.employees.find({ dept: { $in: ["IT", "Finance"] } })```
+   ``` db.employees.find({ dept: { $in: ["IT", "Finance"] } }) ```
 
 
 D. Projection (Select Fields)
 -----------------------------
 31) Include only name
-   ``` db.employees.find({}, { name: 1 })```
+   ``` db.employees.find({}, { name: 1 }) ```
 
 32) Include name and dept (exclude _id)
-    ```db.employees.find({}, { _id: 0, name: 1, dept: 1 })```
+    ``` db.employees.find({}, { _id: 0, name: 1, dept: 1 }) ```
 
 33) Exclude a field
-   ``` db.employees.find({}, { address: 0 })```
+   ``` db.employees.find({}, { address: 0 }) ```
 
 34) Project computed field
    ``` db.sales.aggregate([
       { $project: { total: { $multiply: ["$qty", "$price"] } } }
-    ])```
+    ]) ```
 
 35) Slice array field
-    ```db.posts.find({}, { comments: { $slice: 5 } })```
+    ``` db.posts.find({}, { comments: { $slice: 5 } }) ```
 
 
 E. Sorting, Limiting, Skipping
 ------------------------------
 36) Sort by age ascending
-   ``` db.employees.find().sort({ age: 1 })```
+   ``` db.employees.find().sort({ age: 1 }) ```
 
 37) Sort by age descending
-   ``` db.employees.find().sort({ age: -1 })```
+   ``` db.employees.find().sort({ age: -1 }) ```
 
 38) Limit 5
-   ``` db.employees.find().limit(5)```
+   ``` db.employees.find().limit(5) ```
 
 39) Skip 10
    ``` db.employees.find().skip(10)```
