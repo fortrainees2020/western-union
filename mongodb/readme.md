@@ -9,12 +9,10 @@
    		- Choose Complete Setup.
 
 Tick Install MongoDB as a Service (recommended).
-
 (Optional) Tick Install MongoDB Compass.
-
 Finish installation.
 
-##3. Create Data Folder (if needed)
+## 3. Create Data Folder (if needed)
 
 If not created automatically, open Command Prompt (Admin):
 ```
@@ -34,9 +32,8 @@ net start MongoDB
 Or run manually:
 ```
 "C:\Program Files\MongoDB\Server\<version>\bin\mongod.exe" --dbpath="C:\data\db"
-``
+```
 ## 6. Connect
-
 Open new terminal:
 ```  mongosh ```
 
