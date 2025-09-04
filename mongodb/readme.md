@@ -4,31 +4,37 @@ MongoDB Lab Manual - 100 Practical Queries & Tasks
 A. Database & Collection Management (DDL)
 -----------------------------------------
 1) Show all databases
+   ```
    show dbs
+   ```
 
-2) Switch to (or create) database 'company'
+3) Switch to (or create) database 'company'
+ ```
    use company
+```
 
-3) Create a collection 'employees'
+5) Create a collection 'employees'
+   ```
    db.createCollection("employees")
+   ```
 
-4) Create a capped collection (1MB, 1000 docs)
-   db.createCollection("events", { capped: true, size: 1048576, max: 1000 })
+6) Create a capped collection (1MB, 1000 docs)
+   ```db.createCollection("events", { capped: true, size: 1048576, max: 1000 }) ```
 
-5) Drop a collection
-   db.employees.drop()
-
-6) Drop current database
-   db.dropDatabase()
-
-7) use mydb
-db.oldName.insertOne({ empId: 1, name: "Ashu" })
+7) Drop a collection
+   ``` db.employees.drop()
+```
+8) Drop current database
+  ``` db.dropDatabase()
+```
+9) use mydb
+``` db.oldName.insertOne({ empId: 1, name: "Ashu" }) ```
 
 Rename a collection
- db.employees.renameCollection("myemp")
+ ``` db.employees.renameCollection("myemp") ```
 
 8) View current database
-   db
+   ```db```
 
 9) List collections
    show collections
